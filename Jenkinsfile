@@ -1,10 +1,24 @@
 # Jenkinsfile (Declarative Pipeline)
+#pipeline {
+#    agent { docker { image 'ruby' } }
+#    stages {
+#        stage('build') {
+#            steps {
+#                sh 'ruby --version'
+#            }
+#        }
+#    }
+#}
 pipeline {
-    agent { docker { image 'ruby' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'ruby --version'
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
             }
         }
     }
